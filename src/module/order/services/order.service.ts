@@ -1,19 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { OrderResDTO } from '../usecases/order.dto';
+import { OrderDAL } from 'src/module/data-access-layer/order/order.dal';
 
 @Injectable()
 export class OrderService {
-  // constructor(private readonly orderRepository: OrderDal) {}
+  constructor(private readonly orderDAL: OrderDAL) {}
 
   public async getOrder(id: string): Promise<OrderResDTO> {
-    // TODO
-    return {
-      id,
-      itemId: 'item-1',
-      userId: 'user-1',
-      totalAmount: 10000,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
+    return this.orderDAL.getById(id);
   }
 }
