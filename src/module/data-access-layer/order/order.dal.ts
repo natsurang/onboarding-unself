@@ -1,9 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { OrderEntity } from './order.entity';
 import { OrderDL } from './order.dl';
-import { orderFactory } from './order.factory';
+import { OrderEntity } from './order.entity';
 
 @Injectable()
 export class OrderDAL {
@@ -11,9 +10,9 @@ export class OrderDAL {
     @InjectRepository(OrderEntity)
     private orderRepository: Repository<OrderEntity>,
   ) {
-    for (let i = 0; i < 5; i++) {
-      this.create(orderFactory());
-    }
+    // for (let i = 0; i < 5; i++) {
+    //   this.create(orderFactory());
+    // }
   }
 
   async getById(id: string): Promise<OrderDL> {
