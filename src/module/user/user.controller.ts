@@ -8,7 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { UserUsecase } from './usecases/user.usecase';
-import { UserResDTO } from './usecases/user.dto';
+import { CreatUserDTO, UpdateUserDTO, UserResDTO } from './usecases/user.dto';
 
 @Controller('user')
 export class UserController {
@@ -20,13 +20,13 @@ export class UserController {
   }
 
   @Post()
-  public async createUser(@Body() user: UserResDTO): Promise<UserResDTO> {
+  public async createUser(@Body() user: CreatUserDTO): Promise<UserResDTO> {
     return this.UserUsecase.createUser(user);
   }
   @Put(':id')
   public async updateUser(
     @Param('id') id: string,
-    @Body() user: UserResDTO,
+    @Body() user: UpdateUserDTO,
   ): Promise<UserResDTO> {
     return this.UserUsecase.updateUser(id, user);
   }

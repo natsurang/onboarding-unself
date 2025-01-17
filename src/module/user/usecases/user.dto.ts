@@ -7,3 +7,17 @@ export class UserResDTO {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export class CreatUserDTO {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export class UpdateUserDTO {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+}

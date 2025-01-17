@@ -22,13 +22,13 @@ export class UserDAL {
     return this.toDataLayer(entity);
   }
 
-  async create(userDL: UserDL): Promise<UserDL> {
+  async create(userDL: Partial<UserDL>): Promise<UserDL> {
     const entity = this.userRepository.create(userDL);
     const result = await this.userRepository.save(entity);
     return this.toDataLayer(result);
   }
 
-  async update(id: string, userDL: UserDL): Promise<UserDL> {
+  async update(id: string, userDL: Partial<UserDL>): Promise<UserDL> {
     const entity = await this.userRepository.findOneBy({ id });
     if (!entity) throw new NotFoundException('User not found');
     this.userRepository.update(entity, userDL);

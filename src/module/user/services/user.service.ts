@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserResDTO } from '../usecases/user.dto';
+import { CreatUserDTO, UpdateUserDTO, UserResDTO } from '../usecases/user.dto';
 import { UserDAL } from 'src/module/data-access-layer/user/user.dal';
 
 @Injectable()
@@ -10,11 +10,14 @@ export class UserService {
     return this.userDAL.getById(id);
   }
 
-  public async createUser(user: UserResDTO): Promise<UserResDTO> {
+  public async createUser(user: CreatUserDTO): Promise<UserResDTO> {
     return this.userDAL.create(user);
   }
 
-  public async updateUser(id: string, user: UserResDTO): Promise<UserResDTO> {
+  public async updateUser(
+    id: string,
+    user: UpdateUserDTO,
+  ): Promise<UserResDTO> {
     return this.userDAL.update(id, user);
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserResDTO } from './user.dto';
+import { CreatUserDTO, UpdateUserDTO, UserResDTO } from './user.dto';
 import { UserService } from '../services/user.service';
 
 @Injectable()
@@ -10,11 +10,14 @@ export class UserUsecase {
     return this.userService.getUser(id);
   }
 
-  public async createUser(user: UserResDTO): Promise<UserResDTO> {
+  public async createUser(user: CreatUserDTO): Promise<UserResDTO> {
     return this.userService.createUser(user);
   }
 
-  public async updateUser(id: string, user: UserResDTO): Promise<UserResDTO> {
+  public async updateUser(
+    id: string,
+    user: UpdateUserDTO,
+  ): Promise<UserResDTO> {
     return this.userService.updateUser(id, user);
   }
 
