@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
 import { GetProductUsecase } from './usecases/get-product.usecase';
 import { CreateProductUsecase } from './usecases/create-product.usecase';
 import { UpdateProductUsecase } from './usecases/update-product.usecase';
@@ -19,15 +19,18 @@ export class ProductController {
     return this.getProductUsecase.execute(id);
   }
 
+  @Post()
   public async createProduct(@Body() createOrder: ProductReqDTO): Promise<ProductResDTO> {
     return this.createProductUsecase.execute(createOrder);
   }
 
+  @Put(':id')
   public async updateProduct(@Param('id') id: string, @Body() updateOrder: ProductReqDTO): Promise<ProductResDTO> {
     return this.updateProductUsecase.execute(id, updateOrder);
   }
 
-    public async deleteProduct(@Param('id') id: string): Promise<string> {
-        return this.deleteProductUsecase.execute(id);
-    }
+  @Delete(':id')
+  public async deleteProduct(@Param('id') id: string): Promise<string> {
+      return this.deleteProductUsecase.execute(id);
+  }
 }

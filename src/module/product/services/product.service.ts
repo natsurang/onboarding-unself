@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ProductResDTO, ProductReqDTO } from '../usecases/product.dto';
+import { ProductDAL } from 'src/module/data-access-layer/product/product.dal';
 
 @Injectable()
 export class ProductService {
