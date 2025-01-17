@@ -3,7 +3,7 @@ export class UserResDTO {
   firstName: string;
   lastName: string;
   email: string;
-  phonenumber: string;
+  phoneNumber: string;
   createdAt: Date;
   updatedAt: Date;
 }

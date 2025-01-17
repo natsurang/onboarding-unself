@@ -1,4 +1,12 @@
-import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { UserUsecase } from './usecases/user.usecase';
 import { UserResDTO } from './usecases/user.dto';
 
@@ -12,13 +20,13 @@ export class UserController {
   }
 
   @Post()
-  public async createUser(user: UserResDTO): Promise<UserResDTO> {
+  public async createUser(@Body() user: UserResDTO): Promise<UserResDTO> {
     return this.UserUsecase.createUser(user);
   }
   @Put(':id')
   public async updateUser(
     @Param('id') id: string,
-    user: UserResDTO,
+    @Body() user: UserResDTO,
   ): Promise<UserResDTO> {
     return this.UserUsecase.updateUser(id, user);
   }
