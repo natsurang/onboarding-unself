@@ -31,8 +31,8 @@ export class UserDAL {
   async update(id: string, userDL: Partial<UserDL>): Promise<UserDL> {
     const entity = await this.userRepository.findOneBy({ id });
     if (!entity) throw new NotFoundException('User not found');
-    this.userRepository.update(entity, userDL);
-    return this.toDataLayer(entity);
+    await this.userRepository.update(id, userDL);
+    return this.toDataLayer({ ...entity, ...userDL });
   }
 
   async delete(id: string): Promise<UserDL> {
